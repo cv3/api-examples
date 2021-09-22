@@ -5,7 +5,7 @@ not be creating the correct signature.
 
 ## Configuration
 
-This collection requires the following Globals to be set in Postman's active environment:
+This collection requires the following Globals to be set in Postman:
 
 - REST_KEY
 - REST_SECRET

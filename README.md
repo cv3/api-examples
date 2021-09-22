@@ -1,6 +1,6 @@
 # CV3 API Examples
 
-various API example calls for use in testing and developing the CV3 APIs
+various API example calls for use in testing and developing against the CV3 APIs
 
 ## Quick Start
 
@@ -27,8 +27,7 @@ for use. All of these collections work with the free & paid versions of Postman.
 2. If you don't have a Workspace you want to use, create a Postman Workspace
 3. In the Workspace view, click `Import` in the Collections sidebar
 4. Click `Upload` and choose one of our example collections (\*.postman_collection.json files)
-5. Configure any necessary environmental variables for use with the collection
+5. Configure any necessary Global Postman variables for use with the collection
 
 This last step is explained in more detail in each collection's README.md file. In general it will
-involve making sure you have Global Variables set in the current Postman Environment for the API
-authentication information.
+involve making sure you have Global Variables set in Postman for the API authentication information.

@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "706fe358-25ef-4869-a37e-ac23d55b3dc6",
+		"name": "CV3-Advanced",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products Endpoint",
+			"item": [
+				{
+					"name": "Get Product IDs",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{OAUTH2_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"exportProductIDs\": {}\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/products",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(",
+							"  {",
+							"    url:",
+							"      pm.variables.get(\"OAUTH2_URL\") +",
+							"      \"?grant_type=client_credentials&scope=products\",",
+							"    method: \"POST\",",
+							"    header: {",
+							"      Accept: \"application/json\",",
+							"      \"Content-Type\": \"application/x-www-form-urlencoded\",",
+							"      Authorization:",
+							"        \"Basic \" +",
+							"        btoa(pm.globals.get(\"REST_KEY\") + \":\" + pm.globals.get(\"REST_SECRET\")),",
+							"    },",
+							"  },",
+							"  function (err, res) {",
+							"    pm.globals.set(\"OAUTH2_TOKEN\", res.json().oauth2.access_token);",
+							"  }",
+							");",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Orders Endpoint",
+			"item": [
+				{
+					"name": "Get New Orders",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{OAUTH2_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"orderExport\": {\n            \"newOrders\": true\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/orders",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.sendRequest(",
+							"  {",
+							"    url:",
+							"      pm.variables.get(\"OAUTH2_URL\") +",
+							"      \"?grant_type=client_credentials&scope=orders\",",
+							"    method: \"POST\",",
+							"    header: {",
+							"      Accept: \"application/json\",",
+							"      \"Content-Type\": \"application/x-www-form-urlencoded\",",
+							"      Authorization:",
+							"        \"Basic \" +",
+							"        btoa(pm.globals.get(\"REST_KEY\") + \":\" + pm.globals.get(\"REST_SECRET\")),",
+							"    },",
+							"  },",
+							"  function (err, res) {",
+							"    pm.globals.set(\"OAUTH2_TOKEN\", res.json().oauth2.access_token);",
+							"  }",
+							");",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"utils = {",
+					"  authFor: function (auth_scope) {",
+					"    console.log(\"running auth for \" + auth_scope);",
+					"    pm.sendRequest(",
+					"      {",
+					"        url:",
+					"          pm.variables.get(\"OAUTH2_URL\") +",
+					"          \"?grant_type=client_credentials&scope=\" +",
+					"          auth_scope,",
+					"        method: \"POST\",",
+					"        header: {",
+					"          Accept: \"application/json\",",
+					"          \"Content-Type\": \"application/x-www-form-urlencoded\",",
+					"          Authorization:",
+					"            \"Basic \" +",
+					"            btoa(",
+					"              pm.globals.get(\"REST_KEY\") + \":\" + pm.globals.get(\"REST_SECRET\")",
+					"            ),",
+					"        },",
+					"      }",
+					"    );",
+					"    return res.json().oauth2.access_token",
+					"  },",
+					"};",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "OAUTH2_URL",
+			"value": "https://service.commercev3.com/rest/oauth2/token"
+		},
+		{
+			"key": "API_URL",
+			"value": "https://service.commercev3.com/rest/products"
+		},
+		{
+			"key": "AUTH_SCOPE",
+			"value": "categories"
+		}
+	]
+}

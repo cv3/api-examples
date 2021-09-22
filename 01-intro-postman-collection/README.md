@@ -11,8 +11,9 @@ You can import this Collection in Postman under Workspace >> Import
 
 ## Configuration / Global Variables
 
-It expects some global variables to be set in your active Postman
-environment.
+It expects some global variables to be set in Postman. Global variables
+are not tied to a Postman Collection or Environment. It is important
+to make sure these variables are NOT SHARED in any Postman exports.
 
 - REST_KEY
 - REST_SECRET
