@@ -10,7 +10,7 @@ The following Globals are required to be set in Postman:
 - REST_SECRET
 - OAUTH2_TOKEN (not required, but this collection will create it)
 
-For more Postman details see [general usage](../). and
+For more Postman details see [general usage](../../../). and
 [specific CV3 usage](../01-intro-postman-collection/).
 
 ## Quick Start
