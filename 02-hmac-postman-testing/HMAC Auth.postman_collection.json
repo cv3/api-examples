@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "46038787-7dd2-4b02-9712-6739593b9634",
+		"name": "HMAC Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HMAC-GetOrdersByRange-v1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// start with\r",
+							"const encryption = \"AES-256-CBC\";\r",
+							"const secret = pm.globals.get(\"REST_SECRET\");\r",
+							"\r",
+							"// generate random data\r",
+							"const ivlen = 16;\r",
+							"const iv = CryptoJS.lib.WordArray.random(ivlen);\r",
+							"//const enc_raw = \r",
+							"const random_hash = CryptoJS.lib.WordArray.random(ivlen);\r",
+							"\r",
+							"// HMAC and base64\r",
+							"//const hmac = CryptoJS.HmacSHA256(random_hash, secret).toString(CryptoJS.enc.Hex);\r",
+							"const hmac = CryptoJS.HmacSHA256(random_hash, secret);\r",
+							"const final_hash = iv + hmac + random_hash;\r",
+							"const signature = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(final_hash));\r",
+							"\r",
+							"// put into var\r",
+							"pm.collectionVariables.set(\"SIGNATURE\", signature);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{REST_KEY}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{USERNAME}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"signature\": \"{{SIGNATURE}}\"\r\n    },\r\n    \"data\": {\r\n        \"orderExport\": {\r\n            \"byIDRange\": {\r\n                \"start\": 1,\r\n                \"limit\": 999\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n"
+				},
+				"url": {
+					"raw": "https://service.commercev3.com/rest/orders",
+					"protocol": "https",
+					"host": [
+						"service",
+						"commercev3",
+						"com"
+					],
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HMAC-GetOrdersByRange-v2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// start with\r",
+							"const service_id = pm.globals.get(\"REST_KEY\");\r",
+							"const service_token = pm.globals.get(\"REST_SECRET\");\r",
+							"const ivlen = 16; // length of AES-256-CBC\r",
+							"\r",
+							"// generate random data\r",
+							"const iv = CryptoJS.lib.WordArray.random(ivlen);\r",
+							"\r",
+							"// encrypt\r",
+							"const enc_raw = CryptoJS.AES.encrypt(service_id, CryptoJS.enc.Utf8.parse(service_token), { iv: CryptoJS.enc.Utf8.parse(iv) }).toString();\r",
+							"console.log(enc_raw);\r",
+							"// HMAC\r",
+							"const hmac = CryptoJS.HmacSHA256(enc_raw, service_token).toString();\r",
+							"console.log(hmac);\r",
+							"\r",
+							"// signature\r",
+							"const final_hash = iv + hmac + enc_raw;\r",
+							"const signature = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(final_hash));\r",
+							"\r",
+							"// put into var\r",
+							"pm.collectionVariables.set(\"SIGNATURE\", signature);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{REST_KEY}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{USERNAME}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"signature\": \"{{SIGNATURE}}\"\r\n    },\r\n    \"data\": {\r\n        \"orderExport\": {\r\n            \"byIDRange\": {\r\n                \"start\": 1,\r\n                \"limit\": 999\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n"
+				},
+				"url": {
+					"raw": "https://service.commercev3.com/rest/orders",
+					"protocol": "https",
+					"host": [
+						"service",
+						"commercev3",
+						"com"
+					],
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "SIGNATURE",
+			"value": ""
+		}
+	]
+}
