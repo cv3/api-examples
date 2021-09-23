@@ -200,30 +200,6 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"utils = {",
-					"  authFor: function (auth_scope) {",
-					"    console.log(\"running auth for \" + auth_scope);",
-					"    pm.sendRequest(",
-					"      {",
-					"        url:",
-					"          pm.variables.get(\"OAUTH2_URL\") +",
-					"          \"?grant_type=client_credentials&scope=\" +",
-					"          auth_scope,",
-					"        method: \"POST\",",
-					"        header: {",
-					"          Accept: \"application/json\",",
-					"          \"Content-Type\": \"application/x-www-form-urlencoded\",",
-					"          Authorization:",
-					"            \"Basic \" +",
-					"            btoa(",
-					"              pm.globals.get(\"REST_KEY\") + \":\" + pm.globals.get(\"REST_SECRET\")",
-					"            ),",
-					"        },",
-					"      }",
-					"    );",
-					"    return res.json().oauth2.access_token",
-					"  },",
-					"};",
 					""
 				]
 			}
