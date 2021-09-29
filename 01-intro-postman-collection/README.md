@@ -2,8 +2,9 @@
 
 ## What's in this?
 
-- OAuth Authentication examples
-- Get requests for orders, products and categories
+- Authentication Examples using OAuth
+- Data requests to export orders, products and categories
+- Combined Auth & Data Requests for orders and products
 
 ## Quick Start
 
@@ -24,28 +25,15 @@ user making the call.
 
 ## Usage
 
-This collection uses separate OAuth authentication requests that
-can be followed immediately by data requests. For instance, to use
-the Product-based requests like `Get Products By Range` you would
-first click on the `OAuth-Products` endpoint and click `Send` to
-authenticate with the API.
+This collection is comprised of a variety of requests grouped under
+three folders:
 
-Once this request is complete you will see the successful response
-in the response window containing a valid access token. You don't
-have to do anything with this token in Postman because the code
-under the `Tests` tab will automatically run and make that token
-a Collection variable that can be used in the other calls.
-You can simply click on the `Get Products By Range`
-endpoint and click `Send` to make a data request.
-
-OAuth requests are good for an hour, so you may find calls fail
-after a while and you need to go back to the OAuth request and
-trigger it again for a new token.
-
-OAuth requests are also good for a single endpoint, so if you
-will be working with the entire Collection you likely want to
-trigger each Oauth request first (for `/products`, `/orders`, etc.)
-and then start working with data.
+- Auth Requests ~ contains discreet OAuth2 authentication requests for
+  orders, products and categories endpoints.
+- Data Requests ~ contains discreet data requests to get orders,
+  products and categories. These do not include authentication.
+- Auth & Data Requests ~ data requests that include the OAuth2
+  authentication as part of the request.
 
 ## How do I learn from this
 
@@ -65,3 +53,17 @@ ways:
 3. Click the `Console` toggle in the lower left corner to expand
    the console. You can then examine the raw request and response
    headers and bodies by expanding the appropriate arrows.
+
+If your goal is to sucessfully construct an auth request or a data
+request, you should look at the discreet examples for each. When
+using the data requests, you'll need a valid token before clicking
+the "Send" buttons. This collection is set up so that simply executing
+the appropriate Auth request will then make data requests automatically
+work until that token expires. Auth requests are good for an hour and for
+a single endpoing (products, orders OR categories).
+
+For instance, to use the Product-based requests like `Get Products By Range`
+you would first click on the `OAuth-Products` endpoint in the Auth folder,
+then and click `Send` to authenticate with the API. After that you can
+click `Send` on the `Get Products By Range` endpoint and should see a
+sucessful response.

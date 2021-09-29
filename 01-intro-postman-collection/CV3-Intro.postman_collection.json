@@ -6,373 +6,587 @@
 	},
 	"item": [
 		{
-			"name": "OAuth-Orders",
-			"event": [
+			"name": "Auth Requests",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let response = pm.response.json();\r",
-							"let authToken = response.oauth2.access_token;\r",
-							"pm.collectionVariables.set(\"authTokenOrders\", authToken);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept-encoding": true,
-					"connection": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "OAuth-Orders",
+					"event": [
 						{
-							"key": "password",
-							"value": "{{REST_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{REST_KEY}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let authToken = response.oauth2.access_token;\r",
+									"pm.globals.set(\"authTokenOrders\", authToken);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
-						},
-						{
-							"key": "scope",
-							"value": "orders",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
 					],
-					"path": [
-						"rest",
-						"oauth2",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "OAuth-Products",
-			"event": [
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{REST_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{REST_KEY}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "orders",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/oauth2/token",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let response = pm.response.json();\r",
-							"let authToken = response.oauth2.access_token;\r",
-							"pm.collectionVariables.set(\"authTokenProducts\", authToken);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept-encoding": true,
-					"connection": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "OAuth-Products",
+					"event": [
 						{
-							"key": "password",
-							"value": "{{REST_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{REST_KEY}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let authToken = response.oauth2.access_token;\r",
+									"pm.globals.set(\"authTokenProducts\", authToken);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
-						},
-						{
-							"key": "scope",
-							"value": "products",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
 					],
-					"path": [
-						"rest",
-						"oauth2",
-						"token"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "OAuth-Categories",
-			"event": [
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{REST_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{REST_KEY}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "products",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/oauth2/token",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"let response = pm.response.json();\r",
-							"let authToken = response.oauth2.access_token;\r",
-							"pm.collectionVariables.set(\"authTokenCategories\", authToken);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {
-					"accept-encoding": true,
-					"connection": true
-				}
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "OAuth-Categories",
+					"event": [
 						{
-							"key": "password",
-							"value": "{{REST_SECRET}}",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let authToken = response.oauth2.access_token;\r",
+									"pm.globals.set(\"authTokenCategories\", authToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept-encoding": true,
+							"connection": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{REST_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{REST_KEY}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "{{REST_KEY}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "categories",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "scope",
-							"value": "categories",
-							"type": "text"
+						"url": {
+							"raw": "https://service.commercev3.com/rest/oauth2/token",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"oauth2",
+								"token"
+							]
 						}
-					]
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/oauth2/token",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
-					],
-					"path": [
-						"rest",
-						"oauth2",
-						"token"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Get Orders By Range",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{authTokenOrders}}",
-							"type": "string"
+			"name": "Data Requests",
+			"item": [
+				{
+					"name": "Get Orders By Range",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authTokenOrders}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"data\": {\r\n        \"orderExport\": {\r\n            \"byIDRange\": {\r\n                \"start\": 1,\r\n                \"limit\": 999\r\n            }\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/orders",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"orders"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"data\": {\r\n        \"orderExport\": {\r\n            \"byIDRange\": {\r\n                \"start\": 1,\r\n                \"limit\": 999\r\n            }\r\n        }\r\n    }\r\n}"
+				{
+					"name": "Get New Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authTokenOrders}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"data\": {\r\n        \"orderExport\": {\r\n            \"newOrders\": true\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/orders",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"orders"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/orders",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
+				{
+					"name": "Get Products By Range",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authTokenProducts}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"data\": {\r\n        \"exportProducts\": {\r\n            \"export_by_range\": {\r\n                \"start\": 1\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/products",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authTokenCategories}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"exportCategories\": {\r\n      \"top_level_only\": true,\r\n      \"export_by_range\": {\r\n        \"start\": 1,\r\n        \"limit\": 1000\r\n      }\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/categories",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product Name",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
 					],
-					"path": [
-						"rest",
-						"orders"
-					]
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authTokenProducts}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"importProducts\": {\n            \"products\":[\n                {\n                \"sku\": \"0001\",\n                \"name\": \"New Product Name\"\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/products",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"products"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Get New Orders",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{authTokenOrders}}",
-							"type": "string"
+			"name": "Auth & Data",
+			"item": [
+				{
+					"name": "Get New Orders",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "oauth2-orders",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://service.commercev3.com/rest/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "orders",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{REST_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{REST_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://service.commercev3.com/rest/oauth2/token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"data\": {\r\n        \"orderExport\": {\r\n            \"newOrders\": true\r\n        }\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/orders",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"orders"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"data\": {\r\n        \"orderExport\": {\r\n            \"newOrders\": true\r\n        }\r\n    }\r\n}"
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/orders",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
-					],
-					"path": [
-						"rest",
-						"orders"
-					]
+				{
+					"name": "Get Products By Range",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "oauth2-products",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "products",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://service.commercev3.com/rest/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{REST_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{REST_KEY}}",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://service.commercev3.com/rest/oauth2/token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"data\": {\r\n        \"exportProducts\": {\r\n            \"export_by_range\": {\r\n                \"start\": 1\r\n            }\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://service.commercev3.com/rest/products",
+							"protocol": "https",
+							"host": [
+								"service",
+								"commercev3",
+								"com"
+							],
+							"path": [
+								"rest",
+								"products"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Products By Range",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{authTokenProducts}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"data\": {\r\n        \"exportProducts\": {\r\n            \"export_by_range\": {\r\n                \"start\": 1\r\n            }\r\n        }\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/products",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
-					],
-					"path": [
-						"rest",
-						"products"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Categories",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{authTokenCategories}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"data\": {\r\n    \"exportCategories\": {\r\n      \"top_level_only\": true,\r\n      \"export_by_range\": {\r\n        \"start\": 1,\r\n        \"limit\": 1000\r\n      }\r\n    }\r\n  }\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "text"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://service.commercev3.com/rest/categories",
-					"protocol": "https",
-					"host": [
-						"service",
-						"commercev3",
-						"com"
-					],
-					"path": [
-						"rest",
-						"categories"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
@@ -393,24 +607,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "authTokenOrders",
-			"value": ""
-		},
-		{
-			"key": "authTokenProducts",
-			"value": ""
-		},
-		{
-			"key": "authTokenCategories",
-			"value": ""
-		},
-		{
-			"key": "SIGNATURE",
-			"value": ""
 		}
 	]
 }
