@@ -41,12 +41,6 @@ for use. All of these collections work with the free & paid versions of Postman.
 This last step is explained in more detail in each collection's README.md file. In general it will
 involve making sure you have Global Variables set in Postman for the API authentication information.
 
-## What's Here?
-
-- [01-intro-postman-collection](./01-intro-postman-collection) - OAuth requests, basic fething of products and orders
-- [02-advanced-postman-collection](02-advanced-postman-collection) - IN PROGRESS more detailed examples, data updates
-- [03-hmac-postman-collection](03-hmac-postman-collection) - IN PROGRESS basic examples using HMAC Authentication
-
 ## Contributing
 
-Contribute here or just send your Postman collections to CV3 support and we'll combine with what we have already!
+Contribute here or just send your examples to CV3 support and we'll add them.
