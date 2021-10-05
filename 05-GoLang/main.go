@@ -96,6 +96,9 @@ func doAuthRequest() (*Auth, error) {
 	return &a, nil
 }
 
+// doDataRequest takes a valid token for the products
+// endpoing and requests an export of all products. Here
+// we just return the body of the response.
 func doDataRequest(token string) ([]byte, error) {
 
 	// create JSON payload
