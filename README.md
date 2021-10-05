@@ -18,7 +18,8 @@ specific tools and technologies you're using in your project.
 
 ## CV3 REST API Credentials
 
-Instructions for setting up the API for use are
+All examples require a "REST_KEY" and a "REST_SECRET". These are provided by
+CV3. Instructions for setting up the API for use are
 [here](https://docs.google.com/document/d/1LG8mM1v5gmoIHL66H5szUVyeZz2chUlT6pGUv7y9-uU/edit).
 Please note:
 
