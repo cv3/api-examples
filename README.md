@@ -4,9 +4,17 @@ various API example calls for use in testing and developing against the CV3 APIs
 
 ## Quick Start
 
-Each folder contains its own README.md with detailed instructions for
-install and use of code. Here we just document general practices that
-apply to all of the sample code.
+There are a variety of client-side technologies and toolkits that can be used to
+access the CV3 REST API and exchange data. Here we collect examples so that
+integration developers can review working code to get started with their own
+integrations.
+
+In most cases we suggest developers utilize the included Postman Collections. It
+can be very useful throughout a project to have a quick way to test the
+request/response details without the complications of any project-specific code.
+In addition, when working with other developers or CV3 Support it can be used to
+share code, problems and solutions among folks that may not have access to the
+specific tools and technologies you're using in your project.
 
 ## CV3 REST API Credentials
 
